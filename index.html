@@ -529,13 +529,8 @@
           document.getElementById('summaryDetails').innerHTML = summaryDetails;
           document.getElementById('summary').style.display = 'block';
 
-          // Borrar la caché antes de enviar la notificación
-          clearCache().then(() => {
-            // Enviar notificación push
-            confirmReservation();
-          }).catch((error) => {
-            alert('Error clearing cache: ' + error);
-          });
+          // Enviar notificación push
+          confirmReservation();
         }
 
         function confirmReservation() {
@@ -580,29 +575,7 @@
             notification.close();
           };
         }
-
-        // Función para borrar el caché
-        function clearCache() {
-          return new Promise((resolve, reject) => {
-            if ('caches' in window) {
-              // Borra todos los cachés almacenados
-              caches.keys().then((cacheNames) => {
-                Promise.all(
-                  cacheNames.map((cacheName) => caches.delete(cacheName))
-                ).then(() => {
-                  resolve();  // Indica que el caché se borró correctamente
-                }).catch((error) => {
-                  reject(error);  // Si ocurre un error al borrar el caché
-                });
-              });
-            } else {
-              reject('Cashing API is not supported');
-            }
-          });
-        }
     </script>
-
-
 
     <!-- Travel Demo Specific Script -->
     <script src="js/components/datepicker.js"></script>
