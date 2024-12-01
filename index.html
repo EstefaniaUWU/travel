@@ -296,53 +296,7 @@
                                                         value="enviar">
                                                         Reserve Flights
                                                     </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-
-
-                                    <div class="tab-pane" id="tab-hotels" role="tabpanel"
-                                        aria-labelledby="canvas-home-tab" tabindex="0">
-                                        <div
-                                            class="heading-block border-bottom-0 mb-4 d-flex flex-column flex-md-row justify-content-between align-items-center">
-                                            <h4>Book your Hotels</h4>
-
-                                        </div>
-                                        <form action="acciones/hoteles.php" method="post" class="mb-0">
-                                            <div class="row g-4">
-                                                <div class="col-md-12">
-                                                    <label>City</label>
-                                                    <input type="text" name="cuidad" id="cuidad" value=""
-                                                        class="form-control" required
-                                                        placeholder="Eg. Melbourne, Australia" />
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <div class="row input-daterange">
-                                                        <div class="col-md-6 col-6">
-                                                            <label>Departure</label>
-                                                            <input type="date" value="" class="form-control text-start"
-                                                                required name="salida" id="salida"
-                                                                placeholder="DD/MM/YYYY" />
-                                                        </div>
-                                                        <div class="col-md-6 col-6">
-                                                            <label>Return</label>
-                                                            <input type="date" name="regreso" id="regreso" value=""
-                                                                class="form-control text-start" required
-                                                                placeholder="DD/MM/YYYY" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>Rooms</label>
-                                                    <input type="number" name="cuartos" id="cuartos" min="1" max="10"
-                                                        value="" class="form-control" required placeholder="0" />
-                                                </div>
-                                                <div
-                                                    class="col-md-12 d-flex flex-column flex-md-row justify-content-between align-items-center">
-                                                    <button class="button button-3d m-0 me-4">
-                                                        Reserve Hotels
-                                                    </button>
+                                                    <button class="button button-3d m-0 me-4" onclick="confirmReservation()">Confirm Reservation</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -359,88 +313,6 @@
                                             <p id="summaryDetails"></p>
                                         </div>
 
-                                    </div>
-
-                                    <div class="tab-pane" id="tab-holidays" role="tabpanel"
-                                        aria-labelledby="canvas-home-tab" tabindex="0">
-                                        <div class="heading-block border-bottom-0 mb-4">
-                                            <h4>Search for Holiday Packages</h4>
-                                        </div>
-                                        <form action="acciones/vacaciones.php" method="post" class="mb-0">
-                                            <div class="row g-4">
-                                                <div class="col-md-6 col-12">
-                                                    <label>From</label>
-                                                    <input type="text" name="cuidad" id="cuidad" value=""
-                                                        class="form-control" required
-                                                        placeholder="Eg. Melbourne, Australia" />
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <label>Destination</label>
-                                                    <input type="text" name="destino" id="destino" value=""
-                                                        class="form-control" required placeholder="Eg. Europe" />
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-6">
-                                                            <label>Month</label>
-                                                            <select name="mes" id="mes" class="form-select" required>
-                                                                <option value="">-- Select Month --</option>
-                                                                <option value="January 2024">
-                                                                    January 2024
-                                                                </option>
-                                                                <option value="February 2024">
-                                                                    February 2024
-                                                                </option>
-                                                                <option value="March 2024">March 2024</option>
-                                                                <option value="April 2024">April 2024</option>
-                                                                <option value="May 2024">May 2024</option>
-                                                                <option value="June 2024">June 2024</option>
-                                                                <option value="July 2024">July 2024</option>
-                                                                <option value="November 2024">
-                                                                    November 2024
-                                                                </option>
-                                                                <option value="December 2024">
-                                                                    December 2024
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-md-6 col-6">
-                                                            <label>Budget</label>
-                                                            <select name="presupuesto" id="presupuesto"
-                                                                class="form-select" required>
-                                                                <option value="">-- Select Budget --</option>
-                                                                <option value="$99 to $199">
-                                                                    $99 to $199
-                                                                </option>
-                                                                <option value="$200 to $499">
-                                                                    $200 to $499
-                                                                </option>
-                                                                <option value="$500 to $999">
-                                                                    $500 to $999
-                                                                </option>
-                                                                <option value="$1000 to $1999">
-                                                                    $1000 to $1999
-                                                                </option>
-                                                                <option value="Above $2000">
-                                                                    Above $2000
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>Adults</label>
-                                                    <input type="number" name="personas" id="personas" min="1" max="10"
-                                                        value="" class="form-control" required placeholder="0" />
-                                                </div>
-                                                <div
-                                                    class="col-md-12 d-flex flex-column flex-md-row justify-content-between align-items-center">
-                                                    <button class="button button-3d m-0 me-4">
-                                                        Reserve Flights
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -539,7 +411,6 @@
             alert("Your browser does not support notifications.");
             return;
           }
-
           // Pedir permiso si no está otorgado
           if (Notification.permission === "granted") {
             showConfirmationNotification();
@@ -559,16 +430,13 @@
             );
           }
         }
-
         function showConfirmationNotification() {
           const options = {
             body: "✈️ Your flight reservation has been confirmed! Check your email for more details.",
             icon: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Airplane_icon.png",
             tag: "flight-reservation-confirmation", // Evita duplicados
           };
-
           const notification = new Notification("Reservation Confirmed!", options);
-
           // Manejo de clic en la notificación
           notification.onclick = function () {
             window.focus(); // Lleva al usuario de vuelta a la página si está en otra pestaña
