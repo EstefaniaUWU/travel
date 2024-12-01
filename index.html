@@ -444,6 +444,52 @@
           };
         }
     </script>
+    
+    <!--SERVICE WORKER-->
+    <script>
+        // Función para solicitar permisos de notificación
+        function requestNotificationPermission() {
+          if (Notification.permission !== "granted") {
+            Notification.requestPermission().then(function(permission) {
+              if (permission === "granted") {
+                console.log("Notification permission granted.");
+              } else {
+                console.log("Notification permission denied.");
+              }
+            });
+          } else {
+            console.log("Notification permission already granted.");
+          }
+        }
+
+        // Función para mostrar la notificación
+        function showNotification() {
+          if (Notification.permission === "granted") {
+            const options = {
+              body: "Your flight reservation has been successfully confirmed! Check your email for details.",
+              icon: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Airplane_icon.png",
+              badge: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Flag_of_the_United_States.svg",
+            };
+
+            const notification = new Notification("Flight Reservation Confirmed!", options);
+
+            // Manejo de clic en la notificación
+            notification.onclick = function () {
+              window.focus();
+              notification.close();
+            };
+          } else {
+            alert("Notification permission is not granted. Please enable it first.");
+          }
+        }
+
+        // Enviar notificación automática después de 3 segundos
+        window.onload = function () {
+          setTimeout(function () {
+            showNotification();
+          }, 3000); // 3000 ms = 3 seconds
+        };
+    </script>
 
     <!-- Travel Demo Specific Script -->
     <script src="js/components/datepicker.js"></script>
