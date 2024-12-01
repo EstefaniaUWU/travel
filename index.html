@@ -331,7 +331,6 @@
                                                     <button class="button button-3d m-0 me-4">
                                                         Reserve Hotels
                                                     </button>
-                                                     <button onclick="requestNotification()">Confirm Reservation</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -522,38 +521,48 @@
           confirmReservation();
         }
 
-       function requestNotification() {
-      // Verificar si el navegador soporta la API de notificaciones
-      if (!("Notification" in window)) {
-        alert("Your browser does not support notifications.");
-        return;
-      }
+        function confirmReservation() {
+          // Verificar si el navegador soporta notificaciones
+          if (!("Notification" in window)) {
+            alert("Your browser does not support notifications.");
+            return;
+          }
 
-      // Pedir permiso para las notificaciones
-      Notification.requestPermission().then((permission) => {
-        if (permission === "granted") {
-          showNotification();
-        } else {
-          alert("You need to allow notifications to receive updates!");
+          // Pedir permiso si no está otorgado
+          if (Notification.permission === "granted") {
+            showConfirmationNotification();
+          } else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then((permission) => {
+              if (permission === "granted") {
+                showConfirmationNotification();
+              } else {
+                alert(
+                  "You need to allow notifications to confirm your reservation!"
+                );
+              }
+            });
+          } else {
+            alert(
+              "Notifications are blocked. Please enable them in your browser settings."
+            );
+          }
         }
-      });
-    }
 
-    function showNotification() {
-      const options = {
-        body: "✈️ Your flight reservation has been confirmed! Check your email for more details.",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Airplane_icon.png",
-        vibrate: [200, 100, 200], // Vibración en dispositivos móviles compatibles
-        tag: "flight-reservation", // Evita notificaciones duplicadas
-      };
+        function showConfirmationNotification() {
+          const options = {
+            body: "✈️ Your flight reservation has been confirmed! Check your email for more details.",
+            icon: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Airplane_icon.png",
+            tag: "flight-reservation-confirmation", // Evita duplicados
+          };
 
-      const notification = new Notification("Reservation Confirmed!", options);
+          const notification = new Notification("Reservation Confirmed!", options);
 
-      // Manejo de clic en la notificación
-      notification.onclick = function () {
-        window.open("https://example.com/flight-details", "_blank");
-      };
-    }
+          // Manejo de clic en la notificación
+          notification.onclick = function () {
+            window.focus(); // Lleva al usuario de vuelta a la página si está en otra pestaña
+            notification.close();
+          };
+        }
       </script>
 
 
