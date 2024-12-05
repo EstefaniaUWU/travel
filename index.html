@@ -290,8 +290,8 @@
                                                         value="enviar">
                                                         Reserve Flights
                                                     </button>
-                                                    <button class="button button-3d m-0 me-4" id="installButton" style="display: none;">Install App</button>
-
+                                                    <button class="button button-3d m-0 me-4" type="button" onclick="clearForm()">Clear Form</button>
+                                                    <button id="installButton" style="display: none;">Install App</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -489,6 +489,19 @@
             showNotification();
           }, 3000); // 3000 ms = 3 seconds
         };
+        // Nueva función para borrar los datos
+    function clearForm() {
+    // Limpiar los campos del formulario
+    document.getElementById('lugar').value = '';
+    document.getElementById('destino').value = '';
+    document.getElementById('salida').value = '';
+    document.getElementById('regreso').value = '';
+    document.getElementById('personas').value = '';
+
+    // Ocultar el resumen de la reserva
+    document.getElementById('summaryDetails').innerHTML = '';
+    document.getElementById('summary').style.display = 'none';
+    }
     </script>
 
     <!-- Travel Demo Specific Script -->
