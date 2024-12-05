@@ -18,6 +18,7 @@
 
     <!--ARCHIVO MANIFIESTO-->
     <link rel="manifest" href="manifest.json" />
+    <script defer src="instalar.js"></script>
 
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="images/icon3.png" />
@@ -44,6 +45,14 @@
 </head>
 
 <body class="stretched">
+    <script>
+        // Registrar el Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('serviceWorker.js')
+                .then(reg => console.log('Service Worker registrado:', reg))
+                .catch(err => console.log('Error al registrar el Service Worker:', err));
+        }
+    </script>
     <style>
         h3 {
             font-family: "Comic Sans MS", "Comic Sans", cursive;
